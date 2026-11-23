@@ -40,24 +40,20 @@ FormSubmit sends an **"Activate Form"** email to `jclsanchez45@gmail.com`; click
 From then on every booking arrives by email. (Bookings made before activation are not delivered.)
 
 ## Live site & updates
-The site is live at **https://m9escalante-spec.github.io/jsanchez-home-improvements/**.
+The site is live at **https://sanchezcando.com** (`www.sanchezcando.com` and the old
+`m9escalante-spec.github.io/jsanchez-home-improvements/` address both forward there).
 Every push to `main` runs the backend tests and republishes the site through
-`.github/workflows/deploy.yml`, which copies the public files to the `gh-pages` branch
-that GitHub Pages serves. Don't edit `gh-pages` by hand: each deploy replaces it.
+`.github/workflows/deploy.yml`, which copies the public files (plus `CNAME`) to the `gh-pages`
+branch that GitHub Pages serves. Don't edit `gh-pages` by hand: each deploy replaces it.
 
-**Alternative, no GitHub:** drag the site files onto <https://app.netlify.com/drop> to get a live link in seconds.
-
-## Custom domain: sanchezcando.com
-The site is already set up for **https://sanchezcando.com** (canonical link, share image, sitemap, email links).
-To switch it on:
-1. Buy `sanchezcando.com` (Cloudflare Registrar recommended).
-2. In the domain's DNS add:
-   - `A` records for `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - `CNAME` for `www` → `m9escalante-spec.github.io`
-   On Cloudflare, set these records to **DNS only** (grey cloud) so GitHub can issue the HTTPS certificate.
-3. Once DNS answers, add a file named `CNAME` on `main` containing `sanchezcando.com` and push. The deploy copies it to
-   `gh-pages`. Don't add it before DNS is ready, or the github.io address redirects to a domain that doesn't work yet.
-4. In **Settings → Pages**, tick **Enforce HTTPS** when the certificate is ready (can take up to an hour).
+## Domain: sanchezcando.com
+- Registered at **Cloudflare** (renews November 2027); DNS is managed in Cloudflare.
+- DNS records (all **DNS only**, grey cloud, so GitHub can renew the HTTPS certificate):
+  - `A` `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+  - `AAAA` `@` → `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
+  - `CNAME` `www` → `m9escalante-spec.github.io`
+- The `CNAME` file in this repo tells GitHub Pages to serve the domain. Keep it.
+- HTTPS certificate: Let's Encrypt, issued and renewed automatically by GitHub.
 
 ## Before launch — please confirm
 These are reasonable defaults; change anything that isn't right in `js/config.js` / `index.html`:
