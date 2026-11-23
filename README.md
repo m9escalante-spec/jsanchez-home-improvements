@@ -39,22 +39,23 @@ Until you add projects, the gallery shows "Photos coming soon" tiles.
 FormSubmit sends an **"Activate Form"** email to `jclsanchez45@gmail.com`; click it.
 From then on every booking arrives by email. (Bookings made before activation are not delivered.)
 
-## Put it online (free) with GitHub Pages
-1. Create a new **empty** repository on GitHub (for example `jsanchez-home-improvements`).
-2. Push this folder to it (or upload the files on github.com).
-3. In the repo: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-   The included workflow (`.github/workflows/deploy.yml`) runs the backend tests and publishes the site
-   on every push to `main`. The site appears at `https://<your-user>.github.io/<repo>/`.
+## Live site & updates
+The site is live at **https://m9escalante-spec.github.io/jsanchez-home-improvements/**.
+Every push to `main` runs the backend tests and republishes the site through
+`.github/workflows/deploy.yml`, which copies the public files to the `gh-pages` branch
+that GitHub Pages serves. Don't edit `gh-pages` by hand: each deploy replaces it.
 
-**Alternative, no GitHub:** drag this folder onto <https://app.netlify.com/drop> to get a live link in seconds.
+**Alternative, no GitHub:** drag the site files onto <https://app.netlify.com/drop> to get a live link in seconds.
 
 ## Custom domain
-1. Buy the domain (Cloudflare Registrar, Namecheap, Porkbun, Google/Squarespace Domains…).
+1. Buy the domain (Cloudflare Registrar, Namecheap, Porkbun, Squarespace Domains…).
 2. At the domain's DNS settings add:
    - `A` records for `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - `CNAME` for `www` → `<your-github-user>.github.io`
-3. In the repo **Settings → Pages → Custom domain**, enter the domain, save, then tick **Enforce HTTPS**.
-4. Update the domain in `backend/apps-script/Code.gs` (`SITE_URL`) and add full URLs for `og:image` in `index.html`.
+   - `CNAME` for `www` → `m9escalante-spec.github.io`
+3. In this repo, add a file named `CNAME` (no extension) on `main` containing just the domain, e.g. `jsanchezhomes.com`,
+   and push. The deploy copies it to `gh-pages` (setting the domain only in GitHub's Settings page would be wiped by the next deploy).
+4. In **Settings → Pages**, tick **Enforce HTTPS** once the certificate is ready (can take up to an hour).
+5. Update the domain in `backend/apps-script/Code.gs` (`SITE_URL`) and use full URLs for `og:image` in `index.html`.
 
 ## Before launch — please confirm
 These are reasonable defaults; change anything that isn't right in `js/config.js` / `index.html`:
