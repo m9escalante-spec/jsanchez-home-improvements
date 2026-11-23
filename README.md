@@ -47,15 +47,17 @@ that GitHub Pages serves. Don't edit `gh-pages` by hand: each deploy replaces it
 
 **Alternative, no GitHub:** drag the site files onto <https://app.netlify.com/drop> to get a live link in seconds.
 
-## Custom domain
-1. Buy the domain (Cloudflare Registrar, Namecheap, Porkbun, Squarespace Domains…).
-2. At the domain's DNS settings add:
+## Custom domain: sanchezcando.com
+The site is already set up for **https://sanchezcando.com** (canonical link, share image, sitemap, email links).
+To switch it on:
+1. Buy `sanchezcando.com` (Cloudflare Registrar recommended).
+2. In the domain's DNS add:
    - `A` records for `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
    - `CNAME` for `www` → `m9escalante-spec.github.io`
-3. In this repo, add a file named `CNAME` (no extension) on `main` containing just the domain, e.g. `jsanchezhomes.com`,
-   and push. The deploy copies it to `gh-pages` (setting the domain only in GitHub's Settings page would be wiped by the next deploy).
-4. In **Settings → Pages**, tick **Enforce HTTPS** once the certificate is ready (can take up to an hour).
-5. Update the domain in `backend/apps-script/Code.gs` (`SITE_URL`) and use full URLs for `og:image` in `index.html`.
+   On Cloudflare, set these records to **DNS only** (grey cloud) so GitHub can issue the HTTPS certificate.
+3. Once DNS answers, add a file named `CNAME` on `main` containing `sanchezcando.com` and push. The deploy copies it to
+   `gh-pages`. Don't add it before DNS is ready, or the github.io address redirects to a domain that doesn't work yet.
+4. In **Settings → Pages**, tick **Enforce HTTPS** when the certificate is ready (can take up to an hour).
 
 ## Before launch — please confirm
 These are reasonable defaults; change anything that isn't right in `js/config.js` / `index.html`:

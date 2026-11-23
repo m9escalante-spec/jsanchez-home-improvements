@@ -20,7 +20,7 @@ var CONFIG = {
   PHONE: '954-295-7763',
   PHONE_E164: '+19542957763',
   WHATSAPP: '19542957763',
-  SITE_URL: '',                    // e.g. 'https://jsanchezhomes.com' (used in emails)
+  SITE_URL: 'https://sanchezcando.com', // used in emails
   TIMEZONE: 'America/New_York',
   CALENDAR_ID: 'primary',          // or a specific calendar's ID
   CHECK_CALENDAR_BUSY: true,       // treat your existing calendar events as busy time
