@@ -46,7 +46,7 @@ window.SITE = {
     slots: ["08:00", "10:00", "12:00", "14:00", "16:00"], // estimate visit start times
     saturdaySlots: ["08:00", "10:00", "12:00"],          // shorter Saturdays (set to null to use "slots")
     visitMinutes: 90,
-    blackoutDates: [],              // e.g. ["2026-12-25", "2027-01-01"]
+    blackoutDates: ["2026-11-26", "2026-12-24", "2026-12-25", "2026-12-31", "2027-01-01"], // holidays / days off
     maxPhotos: 4
   },
 
